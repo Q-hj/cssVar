@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      p {
+        color: var(--head);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="form1" action="">
+      <label for="head">选择颜色: </label>
+      <input
+        type="color"
+        name="head"
+        id="colorSelect"
+        onchange="handleChange('head',this)"
+      />
+    </form>
+
+    <p>11111</p>
+  </body>
+  <script>
+    function handleChange(name, color) {
+      console.log(name, color.value);
+
+      document.documentElement.style.setProperty(`--${name}`, color.value);
+    }
+  </script>
+</html>
