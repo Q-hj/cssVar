@@ -5,20 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* main {
+        margin: 50px auto;
+        display: flex;
+        justify-content: center;
+      } */
+
+      html {
+        --size: 150px;
+      }
+
+      .icon {
+        width: var(--size);
+        height: var(--size);
+      }
+
+      input[type="range"] {
+        /* 移除默认样式 */
+        /* appearance: none;  */
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 12px;
+      }
+    </style>
   </head>
   <body>
-    <div class="candy icon">
-      <div class="candy__main"></div>
-      <div class="candy__paper candy__paper--left">
-        <div class="candy__paper-shade"></div>
-        <div class="candy__paper-shade"></div>
-        <div class="candy__paper-shade"></div>
+    <main>
+      <div class="candy icon">
+        <div class="candy__main"></div>
+        <div class="candy__paper candy__paper--left">
+          <div class="candy__paper-shade"></div>
+          <div class="candy__paper-shade"></div>
+          <div class="candy__paper-shade"></div>
+        </div>
+        <div class="candy__paper candy__paper--right">
+          <div class="candy__paper-shade"></div>
+          <div class="candy__paper-shade"></div>
+          <div class="candy__paper-shade"></div>
+        </div>
       </div>
-      <div class="candy__paper candy__paper--right">
-        <div class="candy__paper-shade"></div>
-        <div class="candy__paper-shade"></div>
-        <div class="candy__paper-shade"></div>
-      </div>
-    </div>
+
+      <aside>
+        <section>
+          <label for="size">调整尺寸: </label>
+          <input
+            type="range"
+            name="size"
+            min="100"
+            max="200"
+            onchange="handleSizeChange(this)"
+          />
+        </section>
+        <section>
+          <label for="theme">选择颜色: </label>
+          <input
+            type="color"
+            name="theme"
+            id="colorSelect"
+            onchange="handleChange('theme',this)"
+          />
+        </section>
+      </aside>
+    </main>
   </body>
+  <script>
+    function handleSizeChange(rangeEl) {
+      document.documentElement.style.setProperty(
+        `--size`,
+        rangeEl.value + "px"
+      );
+    }
+
+    function handleColorChange(name, color) {
+      document.documentElement.style.setProperty(`--${name}`, color.value);
+    }
+  </script>
 </html>
